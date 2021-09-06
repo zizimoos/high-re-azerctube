@@ -1,0 +1,18 @@
+extends base
+
+block content 
+    h3 createAccount
+    if errorMessage
+        h3=errorMessage
+    form(method='POST')
+        input(type="email", name="email",placeholder="email" required=true)
+        input(type="text", name="username",placeholder="username" required=true)
+        input(type="password", name="password",placeholder="password" required=true)
+        input(type="password", name="password2",placeholder="confirm password" required=true)
+        input(type="text", name="name",placeholder="name" required=true)
+        input(type="text", name="location",placeholder="location" required=true)
+        input(type="submit", value="Sign up")
+        include partials/social-login
+    div.auth-switch
+        span Already have an account? 
+        a(href="/login") Log in now &rarr;

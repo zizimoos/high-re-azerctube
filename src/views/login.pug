@@ -1,0 +1,15 @@
+extends base 
+
+block content 
+    h3 Sign In
+    h3=errorMessage
+    form(method='POST')
+        input(type="email", name="email",placeholder="email" required=true)
+        input(type="text", name="username",placeholder="username" required=true)
+        input(type="password", name="password",placeholder="password")
+        input(type="submit", value="Sign In")
+        include partials/social-login
+    div.auth-switch
+        span Don't have an account? 
+        a(href="/join") Sign up now &rarr;
+    

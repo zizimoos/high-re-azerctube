@@ -1,0 +1,48 @@
+extends base.pug
+
+block content 
+    div#videoContainer(data-id=video._id)
+        video(src=`/${video.fileUrl}`)
+        div#videoControls.videoControls
+            div.videoControls__play
+                span#play.videoControls__playBtn
+                    i.fas.fa-play
+                div.videoControls__time
+                    span#currenTime 00:00
+                    span  / 
+                    span#totalTime 00:00
+            input(type="range",step="1", value="0", min="0")#timeline.videoControls__timeline
+            div.videoControls__volume
+                input(type="range",step="0.01", value=0.5, min="0", max="1")#volume
+                span#mute
+                    i.fas.fa-volume-up
+                div
+                    span#fullScreen
+                        i.fas.fa-expand
+
+
+    div
+        span Title : #{video.title}
+        br
+        small Description : #{video.description}
+        br
+        small Uploaded by 
+            a(href=`/user/${video.owner._id}`)  #{video.owner.username}
+        
+        br
+        small=video.createdAt
+        br
+        small=video.hashtags
+        br
+        
+        br
+        
+    if String(user._id) === String(video.owner._id)               
+        a(href=`${video.id}/edit`) Edit Video &rarr;
+        br 
+        a(href=`${video.id}/delete`) Delete Video &rarr; 
+    else 
+        li Sorry could not find
+
+block scripts 
+    script(src="/assets/js/videoPlayer.js") 

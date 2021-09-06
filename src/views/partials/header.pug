@@ -1,0 +1,27 @@
+header
+    a(href="/").header__logo
+        i.fab.fa-youtube
+    nav
+        ul
+            li
+                a(href="/search")
+                    i.fas.fa-search
+            if loggedIn
+                li
+                    a(href="/video/upload") Upload Video
+                li
+                    a(href="/user/editProfile") Edit Profile
+                li
+                    a(href="/user/logout")  Log Out
+                li
+                    a(href=`/user/${user._id}`)
+                        if user.avatarUrl === ""
+                            span User Profile
+                        else 
+                            img.header__avatar(src="/"+ user.avatarUrl)
+            else
+
+                li
+                    a(href="/login")  Login                        
+                li
+                    a(href="/join").header__btn  Join
